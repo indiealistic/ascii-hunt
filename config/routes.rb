@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Main routes
   resources :users # ADD `, :only => [:new, :create, :index]` to this once tested to limit ability for users to input into database
-  resources :beets # gets all available routes for Beets
+  resources :shits # gets all available routes for Shits
   resources :comments # gets all available routes for Comments
   resources :likes # gets all available routes for Likes
 

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @beets = Beet.all
+    @shits = Shit.all
     @likes = Like.all
     @like_new = Like.new
     @comments = Comment.all

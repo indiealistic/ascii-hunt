@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   end
 
   def new
-    @beets = Beet.all
+    @shits = Shit.all
     @likes = Like.all
     @like = Like.new
   end
@@ -12,23 +12,23 @@ class LikesController < ApplicationController
   def create
     @likes = Like.all
     like = Like.create like_params
-    beet = like.beet
-    redirect_to root_path(anchor: "#{beet.id}")
+    shit = like.shit
+    redirect_to root_path(anchor: "#{shit.id}")
   end
 
   def show
   end
 
   def destroy
-    beet = params[:beet_id]
+    shit = params[:shit_id]
     user = params[:user_id]
-    like = Like.where(beet_id: beet, user_id: user)
+    like = Like.where(shit_id: shit, user_id: user)
     like.destroy_all
-    redirect_to root_path(anchor: beet)
+    redirect_to root_path(anchor: shit)
   end
 
   private
   def like_params
-    params.require(:like).permit(:beet_id, :user_id)
+    params.require(:like).permit(:shit_id, :user_id)
   end
 end

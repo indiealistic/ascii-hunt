@@ -1,6 +1,6 @@
-class CreateBeets < ActiveRecord::Migration[5.2]
+class CreateShits < ActiveRecord::Migration[5.2]
   def change
-    create_table :beets do |t|
+    create_table :shits do |t|
       t.text :title
       t.text :tags
       t.text :content

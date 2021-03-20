@@ -1,0 +1,5 @@
+<h1>All Shits</h1>
+
+<% @shits.each do |shit| %>
+  <p><%= link_to cl_image_tag(shit.image, :alt => shit.user.email), shit %></p>
+<% end %>

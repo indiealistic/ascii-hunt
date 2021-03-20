@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_232449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "beets", force: :cascade do |t|
+  create_table "shits", force: :cascade do |t|
     t.text "title"
     t.text "tags"
     t.text "content"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_232449) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.integer "beet_id"
+    t.integer "shit_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_232449) do
   create_table "likes", force: :cascade do |t|
     t.text "foo"
     t.boolean "status"
-    t.integer "beet_id"
+    t.integer "shit_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

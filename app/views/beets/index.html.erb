@@ -1,5 +1,0 @@
-<h1>All Beets</h1>
-
-<% @beets.each do |beet| %>
-  <p><%= link_to cl_image_tag(beet.image, :alt => beet.user.email), beet %></p>
-<% end %>
