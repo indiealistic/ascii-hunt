@@ -8,9 +8,6 @@
 
 <%= form_for @user do |f| %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, :required => true %>
-
   <%= f.label :username %>
   <%= f.text_field :username, :maxlength => 18, :required => true %>
 

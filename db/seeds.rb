@@ -1,7 +1,7 @@
 User.destroy_all
-u1 = User.create :email => 'jonesy@idc.studio', :username => 'jonesy', :password => 'chicken'
-u2 = User.create :email => 'craigsy@idc.studio', :username => 'craigsy', :password => 'chicken', :admin => true
-u3 = User.create :email => 'gocsy@idc.studio', :username => 'gocsy', :password => 'chicken', :admin => true
+u1 = User.create :username => 'jonesy', :password => 'chicken'
+u2 = User.create :username => 'craigsy', :password => 'chicken', :admin => true
+u3 = User.create :username => 'gocsy', :password => 'chicken', :admin => true
 puts "#{ User.count } users added."
 
 Shit.destroy_all
