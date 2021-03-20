@@ -30,7 +30,6 @@
 
         <li><%= link_to 'ASCII Hunt', root_path, :class => 'title' %></li>
         <li><%= link_to 'feed', root_path, :class => 'nav-item' %></li>
-        <li><%= link_to 'stats', 'https://simpleanalytics.com/asciihunt.indiealistic.studio', :target => '_blank' %></li>
         <% if @current_user.present? %>
           <li><a href="/users/<%= @current_user.id %>"><%= "view profile" %></a></li>
           <% if @current_user.admin? %>
@@ -56,7 +55,5 @@
 
     <div class="credits">brought to you in <%= Date.current.year %> by <a href="https://indiealistic.studio" target="_blank">indiealistic</a>. made possible with <a href="https://cloudinary.com" target="_blank">Cloudinary</a> and <a href="https://heroku.com" target="_blank">Heroku</a>.</div>
 
-    <script async defer src="https://sa.indiealistic.studio/latest.js"></script>
-    <noscript><img src="https://sa.indiealistic.studio/noscript.gif" alt=""/></noscript>
   </body>
 </html>
