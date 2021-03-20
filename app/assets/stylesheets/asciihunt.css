@@ -367,8 +367,8 @@ input::-webkit-file-upload-button:hover {
   font-size: 12px;
 }
 
-.comments-info > a:first-of-type {
-  margin-right: 15px;
+.delete-comment {
+  margin-left: 15px;
 }
 
 .controls {
