@@ -1,0 +1,1 @@
+# `ASCII Hunt` [![Codacy Badge](https://app.codacy.com/project/badge/Grade/36ffae3970b843f48d00add81929f018)](https://www.codacy.com/gh/indiealistic/ascii-hunt/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=indiealistic/ascii-hunt&amp;utm_campaign=Badge_Grade)

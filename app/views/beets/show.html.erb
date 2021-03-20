@@ -1,0 +1,78 @@
+<h1><%= @beet.title %></h1>
+
+<% if @current_user.present? && @current_user.id == @user.id %>
+<div class="controls">
+  <%= link_to 'edit post', edit_beet_path(@beet) %>
+  <%= link_to 'delete beet', @beet, :method => 'delete' %>
+</div>
+<% end %>
+
+<div class="post">
+
+  <pre><%= @beet.content %></pre>
+
+  <div class="info">
+
+    <a href="/users/<%= @beet.user_id %>" class="info-item"><%= @beet.user.username %></a>
+
+    <% if @current_user.present? %>
+
+      <% if @likes.where(user_id: @current_user.id, beet_id: @beet.id).any? == true %>
+
+        <%= link_to "♥ #{ @likes.where(beet_id: @beet.id).count }", root_path(:user_id => @current_user.id, :beet_id => @beet.id), :id => "liked", :method => 'delete' %>
+
+      <% else %>
+
+        <p>
+          <%= form_for @like_new do |f| %>
+            <%= f.hidden_field :beet_id, value: @beet.id %>
+            <%= f.hidden_field :user_id, value: @current_user.id %>
+            <%= f.submit "♡ #{@likes.where(beet_id: @beet.id).count}", :id => "like" %>
+          <% end %>
+        </p>
+
+      <% end %>
+
+    <% else %>
+
+      <%= link_to "♡ #{@likes.where(beet_id: @beet.id).count}", login_path, :id => "like" %>
+
+    <% end %>
+
+    <div class="tooltip">
+      <%= link_to "", root_path(:id => @beet.id), :class => 'far fa-copy', :id => 'clipboard', :method => 'clipboard' %><span class="tooltiptext">Copy to clipboard</span> 
+    </div>
+
+  </div>
+
+</div>
+
+<% if @beet.title.present? %>
+  <p><%= @beet.title %></p>
+<% end %>
+
+<h2>comments</h2>
+
+<% @comments.each do |comment| %>
+  <div class="comments">
+    <p><%= comment.content %></p>
+    <div class="comments-info">
+      <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
+      <% if @current_user.present? && @current_user.id == comment.user.id %>
+        <%= link_to 'delete comment', comment_path(:id => comment.id, :user_id => @current_user.id, :beet_id => @beet.id), :method => 'delete' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if @current_user.present? %>
+  <div class="leave-comment">
+    <%= form_for @comment_new do |f| %>
+      <%= f.label "comment on #{ @beet.user.username }'s beet:" %>
+      <%= f.text_field :content %>
+      <%= f.hidden_field :beet_id, value: @beet.id %>
+      <%= f.hidden_field :user_id, value: @current_user.id %>
+      <%= f.submit "leave comment" %>
+    <% end %>
+  </div>
+<% end %>

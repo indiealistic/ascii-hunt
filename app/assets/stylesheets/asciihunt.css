@@ -1,0 +1,410 @@
+@import url('https://asciihunt-fonts.vercel.app/css?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css";
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Space Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  text-transform: lowercase;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.title:hover {
+  border: none;
+}
+
+nav {
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -1px;
+  width: 100%;
+  background-color: black;
+  height: 80px;
+}
+
+ul {
+  padding-inline: initial;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+li {
+  list-style-type: none;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 0 30px;
+}
+
+li > a {
+  text-decoration: none;
+  border: none;
+}
+
+li > a:hover {
+  border-bottom: 1px solid white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+h1, h2, h3 {
+  font-weight: 400;
+}
+
+.main-container {
+  max-width: 1135px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.create-beet, input[type="submit"] {
+  display: inline-flex;
+  color: white;
+  font-family: 'Space Mono', monospace;
+  text-transform: lowercase;
+  font-size: 14px;
+  background-color: black;
+  outline: none;
+  border: 1px solid white;
+  padding: 8px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 0;
+  transition: 0.25s;
+}
+
+.create-beet:hover, input[type="submit"]:hover {
+  color: black;
+  background-color: white;
+}
+
+.credits {
+  font-size: 12px;
+  margin: 50px 0 20px 0;
+  cursor: default;
+  bottom: 10px;
+}
+
+.credits::after {
+  content: " ᕕ( ᐕ )ᕗ";
+}
+
+.credits:hover::after {
+  content: " ᕕ( ᐛ )ᕗ";
+  margin-left: 2.5px;
+}
+
+/* -------- Main Post Feed -------- */
+
+.post-container {
+  max-width: 1135px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+img {
+  width: 560px;
+}
+
+pre {
+  display: flex;
+  align-self: center;
+  margin: 0 0 0 5px;
+}
+
+.info-container {
+  margin: 30px 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: -10px 0 20px 0;
+  height: 60px;
+}
+
+.info-item {
+  font-size: 16px;
+  border: none;
+  transition: 0.25s;
+}
+
+.info-item:hover {
+  border-bottom: 1px solid white;
+}
+
+.info > a:first-child {
+  margin: 0 15px 0 0;
+}
+
+.unliked {
+  padding: 5px 9px;
+}
+
+.new_like {
+  min-width: 20px;
+  border: none;
+}
+
+#like, #liked {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  border: none;
+  margin: 2px 10px 0 10px;
+  padding: 5px 9px;
+  border-radius: 15px;
+  transition: 0.25s;
+}
+
+#liked {
+  text-decoration: none;
+  border: none!important;
+}
+
+#like:hover, #liked:hover {
+  color: black;
+  background-color: white;
+  border-bottom: none;
+}
+
+.guest {
+  margin: 2px 10px 0 10px;
+}
+
+#comment-beet {
+  margin: 0 15px;
+}
+
+#clipboard {
+  border: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 0 15px;
+}
+
+.tooltip .tooltiptext {
+  font-size: 12px;
+  visibility: hidden;
+  width: 140px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 7px 4px;
+  border: 1px solid white;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity .6s;
+  bottom: 140%;
+  left: 50%;
+  margin-left: -78px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* -------- Beet Create Page -------- */
+
+form {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+}
+
+form > label, .field_with_errors {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+form > input, select {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  text-transform: lowercase;
+  font-size: inherit;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+}
+
+.field_with_errors > input {
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  text-transform: lowercase;
+  font-size: inherit;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  width: 95%;
+  color: white;
+  background-color: red;
+}
+
+ol {
+  margin: 30px 0;
+  color: red;
+  padding-inline-start: 0;
+}
+
+input[type="submit"] {
+  margin-top: 15px;
+  max-width: 200px;
+  align-self: center;
+}
+
+input::-webkit-file-upload-button {
+  font-family: 'Space Mono', monospace;
+  text-transform: lowercase;
+  font-size: inherit;
+  margin: 0 20px 30px 0;
+  padding: 10px 15px;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 20px;
+  align-self: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: 0.25s;
+}
+
+input::-webkit-file-upload-button:hover {
+  color: white;
+  background-color: black;
+}
+
+/* ------- Beet Detail Page ------- */
+
+.comments {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.leave-comment {
+  border-top: solid 1px white;
+  margin-top: 20px;
+  padding-top: 40px;
+}
+
+.comments-info {
+  margin: 20px 0;
+}
+
+.controls {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* -------- Misc UX Tings -------- */
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(250,250,250,0.9); box shaddow */
+  border: 1px solid rgba(250,250,250,0.9);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(250,250,250,0.5); box shaddow */
+  border: 1px solid rgba(250,250,250,0.9);
+  border-radius: 5px;
+  background-color: rgba(250,250,250,0.9);
+}
+
+::-moz-selection {
+  color: black;
+  background: rgba(255, 255, 255, 0.996);
+}
+
+::selection {
+  color: black;
+  background: rgba(255, 255, 255, 0.996);
+}
+
+/* html {
+    scroll-behavior: smooth;
+}
+
+:target:before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin: -100px 0 0;
+} */
+
+/* -------- Media Queries ---------  */
+
+@media all and (max-width: 1144px) and (min-width: 20px) {
+
+  nav {
+    height: 100%;
+  }
+
+  nav > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav > ul > li {
+    margin: 10px 0;
+  }
+
+}

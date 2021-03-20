@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+require 'asciigen'
+require 'optparse'
+
+options       = {}
+invert_chars  = false
+
+opt_parser = OptionParser.new do |opts|
+  opts.banner = 'Usage: asciigen [options] <path_or_url>'
+
+  opts.on('-w', '--width WIDTH', 'Width of the finished Ascii Art (Default: 100)') do |width|
+    options[:width] = width.to_i
+  end
+
+  opts.on('-f', '--format [text/html]', 'output format (Default: text)') do |format|
+    options[:format] = format
+  end
+
+  opts.on('-c', '--color', 'Switch to use colored terminal output (Default: false)') do
+    options[:color] = true
+  end
+
+  opts.on('-i', '--invert-chars', 'Invert the character map. Depending on your terminal and image this can make the image clearer (or a lot worse)') do
+    invert_chars = true
+  end
+
+  opts.on_tail('-v', '--version', 'Show AsciiGen version') do
+    puts 'AsciiGen version ' + AsciiGen::VERSION
+    exit
+  end
+
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+
+end
+
+begin
+  opt_parser.parse!
+rescue OptionParser::MissingArgument => e
+  puts "ERROR: #{e.message.capitalize}\n#{opt_parser}"
+  exit
+end
+
+if ARGV.length == 0
+  puts "ERROR: You must specify a path or URL to convert\n#{opt_parser}"
+  exit
+end
+
+art = AsciiGen.new(ARGV[0])
+
+art.image_chars = art.image_chars.reverse if invert_chars
+
+puts art.to_ascii_art(options)
+

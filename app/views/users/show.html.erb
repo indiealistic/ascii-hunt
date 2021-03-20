@@ -1,0 +1,66 @@
+<h1><%= @user.username %></h1>
+
+<div class="controls">
+
+  <% if @current_user.present? && @current_user.id == @user.id %>
+   <%= link_to 'edit profile', edit_user_path %>
+  <% end %>
+
+  <% if @user.bio.present? %>
+  <p><%= @user.bio %></p>
+  <% end %>
+
+</div>
+
+<div class="post-container">
+
+<% @beets.each do |beet| %>
+
+  <% if beet.user_id == @user.id %>
+
+    <div class="post">
+      <pre><%= beet.content %></pre>
+
+      <div class="info">
+
+        <a href="/users/<%= beet.user_id %>" class="info-item"><%= beet.user.username %></a>
+
+        <% if @current_user.present? %>
+
+          <% if @likes.where(user_id: @current_user.id, beet_id: beet.id).any? == true %>
+
+            <%= link_to "♥ #{ @likes.where(beet_id: beet.id).count }", root_path(:user_id => @current_user.id, :beet_id => beet.id), :id => "liked", :method => 'delete' %>
+
+          <% else %>
+
+            <p>
+              <%= form_for @like_new do |f| %>
+                <%= f.hidden_field :beet_id, value: beet.id %>
+                <%= f.hidden_field :user_id, value: @current_user.id %>
+                <%= f.submit "♡ #{@likes.where(beet_id: beet.id).count}", :id => "like" %>
+              <% end %>
+            </p>
+
+          <% end %>
+
+        <% else %>
+
+          <%= link_to "♡ #{@likes.where(beet_id: beet.id).count}", login_path, :id => "like" %>
+
+        <% end %>
+
+        <a href="/beets/<%= beet.id %>" id="comment-beet" class="info-item">comments <%= "(#{@comments.where(beet_id: beet.id).count})" if @comments.where(beet_id: beet.id).count != 0 %></a>
+
+        <div class="tooltip">
+          <%= link_to "", root_path(:id => beet.id), :class => 'far fa-copy', :id => 'clipboard', :method => 'clipboard' %><span class="tooltiptext">Copy to clipboard</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  <% end %>
+
+<% end %>
+
+</div>

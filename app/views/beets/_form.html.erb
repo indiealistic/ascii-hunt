@@ -1,0 +1,9 @@
+<%= form_for(@beet, :html => {:multipart => true}) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :tags %>
+  <%= f.text_field :tags %>
+  <%= f.label "Image to convert" %>
+  <%= f.cl_image_upload :image, :class => "custom-file-input", :required => true %>
+  <%= f.submit %>
+<% end %>
