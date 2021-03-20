@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/indiealistic/ascii-hunt
-  revision: f4c3c823a271e26919f0a3f86ea79d79fe615817
+  revision: 15ba5c9f9be644ca7790ab574510489ccbd57d6a
   branch: main
   glob: asciigen/*.gemspec
   specs:

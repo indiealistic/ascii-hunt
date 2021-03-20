@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+
   def home
     @beets = Beet.all
     @likes = Like.all
@@ -10,4 +11,5 @@ class PagesController < ApplicationController
     beet = Beet.find params[:id]
     IO.popen("pbcopy", "w") { |clipboard| clipboard.puts beet.content }
   end
+
 end

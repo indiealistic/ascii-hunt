@@ -10,7 +10,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" async />
 
     <%= favicon_link_tag asset_path('favicon.png') %>
 
@@ -33,11 +33,11 @@
         <li><%= link_to 'stats', 'https://simpleanalytics.com/asciihunt.indiealistic.studio', :target => '_blank' %></li>
         <% if @current_user.present? %>
           <li><a href="/users/<%= @current_user.id %>"><%= "view profile" %></a></li>
-          <li><%= link_to "log out", login_path, :class => 'nav-item', :method => 'delete' %></li>
-          <li><%= link_to "create beet!", new_beet_path, :class => 'create-beet' %></li>
           <% if @current_user.admin? %>
             <li><%= link_to 'users (admin only)', users_path %></li>
           <% end %>
+          <li><%= link_to "log out", login_path, :class => 'nav-item', :method => 'delete' %></li>
+          <li><%= link_to "create beet!", new_beet_path, :class => 'create-beet' %></li>
         <% else %>
           <li><%= link_to 'sign up', new_user_path %></li>
           <li><%= link_to 'login', login_path %></li>
@@ -48,7 +48,9 @@
     </nav>
 
     <div class="main-container">
-    <%= yield %>
+
+      <%= yield %>
+
     </div>
 
     <div class="credits">brought to you in <%= Date.current.year %> by <a href="https://indiealistic.studio" target="_blank">indiealistic</a>. made possible with <a href="https://cloudinary.com" target="_blank">Cloudinary</a> and <a href="https://heroku.com" target="_blank">Heroku</a>.</div>

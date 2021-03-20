@@ -1,6 +1,6 @@
 <div class="post-container">
 
-  <% @beets.order(:created_at).each do |beet| %>
+  <% @beets.order('created_at DESC').each do |beet| %>
 
     <div class="post" id="<%= beet.id %>">
 
@@ -34,7 +34,7 @@
 
         <% end %>
 
-        <a href="/beets/<%= beet.id %>" id="comment-beet" class="info-item">comments <%= "(#{@comments.where(beet_id: beet.id).count})" if @comments.where(beet_id: beet.id).count != 0 %></a>
+        <a href="/beets/<%= beet.id %>" id="comment-beet" class="info-item">comments <%= "[#{@comments.where(beet_id: beet.id).count}]" if @comments.where(beet_id: beet.id).count != 0 %></a>
 
         <div class="tooltip">
           <%= link_to "", root_path(:id => beet.id), :class => 'far fa-copy', :id => 'clipboard', :method => 'clipboard' %><span class="tooltiptext">Copy to clipboard</span>

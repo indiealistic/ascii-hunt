@@ -40,18 +40,14 @@
     <% end %>
 
     <div class="tooltip">
-      <%= link_to "", root_path(:id => @beet.id), :class => 'far fa-copy', :id => 'clipboard', :method => 'clipboard' %><span class="tooltiptext">Copy to clipboard</span> 
+      <%= link_to "", root_path(:id => @beet.id), :class => 'far fa-copy', :id => 'clipboard', :method => 'clipboard' %><span class="tooltiptext">Copy to clipboard</span>
     </div>
 
   </div>
 
 </div>
 
-<% if @beet.title.present? %>
-  <p><%= @beet.title %></p>
-<% end %>
-
-<h2>comments</h2>
+<h2>Comments <%= "[#{ @comments.where(beet_id: @beet.id).count }]" %></h2>
 
 <% @comments.each do |comment| %>
   <div class="comments">
