@@ -50,7 +50,7 @@
 <h2>Comments <%= "[#{ @comments.where(shit_id: @shit.id).count }]" %></h2>
 
 <% @comments.each do |comment| %>
-  <div class="comments">
+  <div class="comments" id="<%= comment.id %>">
     <p><%= comment.content %></p>
     <div class="comments-info">
       <a href="/users/<%= comment.user.id %>"><%= comment.user.username %></a>
@@ -63,8 +63,8 @@
 
 <% if @current_user.present? %>
   <div class="leave-comment">
+    <h2>Comment on <%= @shit.user.username %>'s shit:</h2>
     <%= form_for @comment_new do |f| %>
-      <%= f.label "comment on #{ @shit.user.username }'s shit:" %>
       <%= f.text_field :content %>
       <%= f.hidden_field :shit_id, value: @shit.id %>
       <%= f.hidden_field :user_id, value: @current_user.id %>
